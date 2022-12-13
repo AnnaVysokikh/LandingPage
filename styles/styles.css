@@ -250,12 +250,14 @@
     background-image: url(../images/left.svg);
     width: 42px;
     height: 14px;
+	cursor: pointer;
 }
 
 .slider-arrow-right {
     background-image: url(../images/right.svg);
     width: 42px;
     height: 14px;
+	cursor: pointer;
 }
 
 .slider-dots {
@@ -273,7 +275,7 @@
     cursor: pointer;
 }
   
-.slider-dots__item:hover, .slider_dots_item.active {
+.slider-dots__item:hover, .slider-dots__item.active {
     background: white;
 }
 
@@ -292,7 +294,7 @@
     cursor: pointer;
 }
 
-.project-nav__item:hover {
+.project-nav__item:hover, .project-nav__item.active {
     text-decoration: underline;
     text-underline-offset: 16px;
 }
@@ -302,10 +304,27 @@
 }
 
 .project-img {
+	position: relative;
     margin-top: 50px;
     background-image: url(../images/project1.jpg);
     width: 679px;
     height: 482px;
+}
+
+.project-img .image {
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+.project-img .image.active {
+  opacity: 1;
 }
 
 .sep-camera {
@@ -1091,8 +1110,8 @@ input::placeholder {
     .project-img, .slider-fantasies-img {
         position: relative;
 		margin-top: 20px;
-    } 
-      
+    }
+   
     .slider__arrows {
         position: absolute;
         top: 122px;
@@ -1123,7 +1142,6 @@ input::placeholder {
         right: 0;
     }
 }
-
 
 @media screen and (max-width: 900px) {
 
