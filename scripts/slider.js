@@ -1,12 +1,21 @@
 let images = [{
     url: "images/project1.jpg",
-    title: "Rostov-on-Don, Admiral"
+    title: "Rostov-on-Don, Admiral",
+    area: "81 m<sup>2</sup>",
+    time: "3.5 months",
+    cost: "Upon request"
   }, {
     url: "images/project2.jpg",
-    title: "Sochi Thieves"
+    title: "Sochi Thieves",
+    area: "105 m<sup>2</sup>",
+    time: "4 months",
+    cost: "Upon request"
   }, {
     url: "images/project3.jpg",
-    title: "Rostov-on-Don Patriotic"
+    title: "Rostov-on-Don Patriotic",
+    area: "93 m<sup>2</sup>",
+    time: "3 months",
+    cost: "Upon request"
   }];
 
 
@@ -24,8 +33,14 @@ function initSlider(options) {
   let sliderDots = document.querySelector(".slider-dots");
   let projectNav = document.querySelector(".project-nav");
   let projectImg = document.querySelector(".project-img");
+
+  let pCity = document.querySelector(".p-city");
+  let pArea = document.querySelector(".p-area");
+  let pTime = document.querySelector(".p-time");
+  let pCost = document.querySelector(".p-cost");  
   
   initImages();
+  initText(0);
   initArrows();
   initMenu();
   
@@ -44,6 +59,13 @@ function initSlider(options) {
     });
   }
   
+  function initText(index) {
+    pCity.innerHTML = `${images[index].title}`;
+    pArea.innerHTML = `${images[index].area}`;
+    pTime.innerHTML = `${images[index].time}`;
+    pCost.innerHTML = `${images[index].cost}`;
+  }
+
   function initArrows() {
 	  
 	arrowLeft.addEventListener("click", function() {
@@ -86,13 +108,15 @@ function initSlider(options) {
     projectImg.querySelector(".active").classList.remove("active");
     projectImg.querySelector(".n" + num).classList.add("active");
 	
-	projectNav.querySelector(".active").classList.remove("active");
+	  projectNav.querySelector(".active").classList.remove("active");
     projectNav.querySelector(".n" + num).classList.add("active");
 	  
     if (options.dots) {
       sliderDots.querySelector(".active").classList.remove("active");
       sliderDots.querySelector(".n" + num).classList.add("active");
     }
+
+    initText(num);
   }
   
   function initAutoplay() {
